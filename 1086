@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace_gogen86
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int n = int.Parse(Console.ReadLine()); //методом парс считываю число с клавиатуры
+            bool[] mass = new bool[163842];     // с помощью булевого массива задаю диапазон, в котором буду работать
+            int[] mass1 = new int[n];  // и массив введеных чисел
+            
+            List<int> mass3 = new List<int>(); //использую метод List для работы с индексами простых чисел
+
+            for (int i = 0; i < n; i++)    
+                mass1[i] = int.Parse(Console.ReadLine());  // ввожу с клавиатуры каждый элемент до n
+            for (int i = 2; i < 163842; i++)
+                mass[i] = true;   // для всех значений в диапозоне 
+            for (int i = 2; i < Math.Sqrt(163842); i++)       //кроме условий проверки на простое число - небходимо true       
+            {
+                if (mass[i])
+            {
+                for (int j = i * i; j < 163842; j += i)  // достаточно перебрать все числа до корня из этого числа
+                {                                         // тогда число будет простым 
+                    mass[j] = false;     //и при невыполнении этих условий в булев массив передается false
+                }
+            }
+        }
+            for (int i = 2; i < 163842; i++)  
+                if (mass[i]) mass3.Add(i);               
+            for (int i = 0; i < n; i++)               
+            Console.WriteLine(mass3[mass1[i]-1]); // вывод по индексу искомого простого числа
+          
+            Console.WriteLine();
+           // Console.ReadKey();
+     }
+    }
+}
