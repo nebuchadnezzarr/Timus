@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace gerger
+{
+    class Programgogena
+    {
+        static void Main(string[] args)
+        {
+            int code1 = int.Parse(Console.ReadLine()); //методом парс ввожу код для первого замка
+            int code2 = int.Parse(Console.ReadLine()); //и для второго
+            if ((code1 % 2 == 0 ) && (code2 % 2 != 0))   // проверка, если остаток при делении на 2 равен 0 а второй не равен - замок будет взломан рано или поздно
+                Console.WriteLine("yes");
+            else if ((code1 % 2 != 0 ) && (code2 % 2 == 0)) //и наоборот, не будет при условии
+                Console.WriteLine("no");
+
+            // Console.ReadKey();
+        }
+    }
+}
+
