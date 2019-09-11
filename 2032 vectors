@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace MasonicDream
+{
+class Masoni
+{
+public struct Pair
+{
+public Pair(Int64 vector_1, Int64 vector_2)
+{
+vector_one = vector_1;
+vector_two = vector_2;
+}
+public Int64 vector_one;
+public Int64 vector_two;
+}
+static List<Pair> triples(Int64 c)
+{
+List<Pair> v = new List<Pair>();
+Int64 a = 0, b = c;
+while (b >= a)
+{
+while ((a * a + b * b) > (c * c))
+b--;
+if (((a * a + b * b) == c * c) && (a <= b)) v.Add(new Pair(Math.Min(a,b), Math.Max(a,b)
+a++;
+}
+return v;
+}
+static List<Pair> perms(Pair par)
+{
+List<Pair> v = new List<Pair>();
+for (int i = -1; i <= 1; i += 2)              
+for (int j = -1; j <= 1; j += 2)
+{
+v.Add(new Pair(i * par.vector_one, j * par.vector_two));                   
+v.Add(new Pair(i * par.vector_two, j * par.vector_one));                
+}
+return v;
+}
+static void Main(string[] args)
+{
+string[] vectors = Console.ReadLine().Split(' '); 
+Int64 AB, BC, CA;
+Int64.TryParse(vectors[0], out AB);
+Int64.TryParse(vectors[1], out BC);
+Int64.TryParse(vectors[2], out CA);
+List<Pair> a = triples(AB            
+List<Pair> b = triples(BC);
+List<Pair> c = triples(AC);
+for (int i = 0; i < a.Count; i++)
+{
+Pair p1 = a[i];                  
+ for (int j = 0; j < b.Count(); j++)
+{
+var bp = perms(b[j]);
+for (int k = 0; k < bp.Count; k++)
+{
+Pair p2 = bp[k];
+Int64 x = p1.vector_one + p2.vector_one;
+Int64 y = p1.vector_two + p2.vector_two;
+if (x * x + y * y == CA * CA)
+{
+Console.Write("0 0\n" + p1.vector_one + " " + p1.vector_two + "\n" + x + " " + y);
+Console.ReadKey();
+return;
+}
+}
+}
+}
+Console.Write(-1);
+Console.ReadKey(); return;}}}
