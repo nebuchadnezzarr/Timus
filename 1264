@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1264
+{
+    class programagogena
+    {
+        static void Main(string[] args)
+        {
+           string[] mass= Console.ReadLine().Split(' ');  //методом сплит считываю вводимые числа 
+           int N = int.Parse(mass[0]);           //парсом получаю N-мерный массив
+           int M = int.Parse(mass[1]);     // от 0 до М раз будет выполняться функция в N-м массиве
+           if ((0 <= N && N <= 40000) && (0 <= M && M <= 40000))  // проверка на выполнение условий задачи
+           {
+               
+                   Console.WriteLine(N * (M + 1));    // вывод на экран искомого времени 
+                   Console.ReadKey();
+               
+
+           }
+
+        }
+    }
+}
