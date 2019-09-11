@@ -1,0 +1,25 @@
+using System;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main() 
+        {
+                                                               // для комментирования куска запомнить ctrl k c и ctrl k u
+          
+            int a, b, Harry, Larry;                          // ввожу переменные 
+            string[] numbers= Console.ReadLine().Split(' '); // делаю штуку для ввода с клавиатуры, используя метод Split
+            a = int.Parse(numbers[0]);                         // чтобы из введенной строки получить число использую Parse
+            b = int.Parse(numbers[1]);
+
+            Harry = b - 1;
+            Larry = a - 1;
+
+            Console.WriteLine(Harry + "  " + Larry);              // вывод на экран результатов
+            //Console.ReadKey();                            // для введения других чисел
+             
+
+        }
+    }
+}
