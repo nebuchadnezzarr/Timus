@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1820
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int s = 0; //зануляю начальное количество машин 
+            string[] mass1 = (Console.ReadLine()).Split(' ');  //ввожу первые 2 числа
+            int k = int.Parse(mass1[0]);  //методом парс считываю число машин
+            int n = int.Parse(mass1[1]);  // и минуты
+          
+            string[] mass2 = (Console.ReadLine()).Split(' ');   //объявляю еще один массив для второй строчки
+
+            for (int i = 0; i < n; i++)  
+            {
+                s = s + int.Parse(mass2[i]);  // с помощью счетчика подсчитываю, сколько машин заификсировала камера
+
+
+                if (s <= k) //сравниваю число машин, зафиксированных на камере с общим числом машин 
+                { 
+                    s = 0;
+                }
+                else s = s - k;   // подсчет как разность между зафиксированным и изначальным числом машин
+            }
+            Console.WriteLine(s);
+           // Console.ReadKey();
+
+        }
+    }
+}
