@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace tryharder
+{
+    class Pingvi       // создаю класс пингви
+    {
+        public string name;   //поля данных
+        public int penguins;        
+        public int sardines;
+        private int weight;
+        public int squids;
+        private int ration;
+        public Random rnd = new Random();  //а также генерация случайных чисел
+
+        public Pingvi() {}    //пустой конструктор для наследствующего класса "class Aptenodytesforsteri : Pingvi"
+
+        public Pingvi (string n, int p, int s, int s1)    //параметрический конструктор
+        {
+           name = n;       //в него задается название
+           penguins = p;   //число пингвинов
+           sardines = s;    //число сардин и кальмаров
+           squids = s1;
+           weight= rnd.Next(1, 10); //рандомно подсчитывается средний вес одного морского обитателя (пищи)
+           ration = 5;  //средний дневной рацион одного пингвина 
+        }
+
+        public void sardineration()   //метод подсчета съеденной рыбы
+        {
+            Console.WriteLine(name);
+            Console.WriteLine("Средний вес одной сардины    " + weight);
+            Console.WriteLine("Всего съедено сардин     " + (sardines * weight));
+        }
+
+        public void  normalration()       //метод подсчета на одного пингвина и сравнение с рационом
+        {
+            if ((sardines+squids)>ration)
+        Console.WriteLine ("На одного пингвина приходится морских обитателей " + ((sardines+squids)/penguins));
+        }
+
+       
+        private void squidration()  //метод который недоступен извне - для подсчета съеденных кальмаров
+        {
+            Console.WriteLine("Всего съедено кальмаров    " + (squids*weight));
+        }
+    }
+
+    class Aptenodytesforsteri : Pingvi //класс наследующий предыдущий
+    {
+        private string kind;      //поля данных содержат название, численность популяции, случайно генерирующиеся пропорции и вес, а также пол (через бул)
+        public int population; 
+        public int proportions;
+        public bool sex;
+        public int weightp;
+        public Random rnd1 = new Random();
+        public Random rnd2 = new Random();
+       
+        public Aptenodytesforsteri (string n)       // еще один параметрический конструктор
+        {
+            kind = n;
+            population = rnd2.Next(800,10000); //генерация численности
+            proportions = rnd1.Next(9,12);   //генерация размеров
+            sex = true;  //пол
+            weightp = rnd.Next(22, 45);  //вес
+       }
+        public void forsterieating() //метод вывода размеров пингвина
+        {
+            Console.WriteLine("Размеры        " + proportions);  
+            Console.WriteLine("Вес     " + weightp);
+
+            if ((weightp > 22) && (weightp < 40) && (proportions > 10))
+            {
+                sex = false;                // условия размеров для самца и самки
+            }
+            else sex = true;
+        }
+        public void forestripol()  //метод для определения пола
+        {
+            if (sex == true) { Console.WriteLine("Самка    " + kind);  
+            }
+            else Console.WriteLine("Самец     " + kind);
+            Console.WriteLine("Численность    " + population); //а также вывод популяции в одной колонии
+        } 
+    }
+   
+    class mainprogram      //основная программа
+    {
+        static void Main()
+        {
+            Console.WriteLine("Введите кол-во пингвинов");  
+            int p = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите кол-во сардин");         
+            int s = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите кол-во кальмаров");
+            int s1 = int.Parse(Console.ReadLine());
+            Pingvi ping1 = new Pingvi("       ", p, s, s1); // объект класса
+            ping1.sardineration();       //использование методов класса
+         // ping1.squidration();
+            ping1.normalration();            
+            Console.WriteLine();
+            
+            
+            Console.WriteLine();
+            Aptenodytesforsteri ping3 = new Aptenodytesforsteri("Aptenodytes forsteri");  //объект наследующего класса
+            Console.WriteLine("Описание вида");    //использование методов наследующего класса  
+            ping3.forsterieating();
+            ping3.forestripol();
+            Console.WriteLine();
+            Console.WriteLine();
+           
+            Console.ReadKey();
+        }
+    }
+} 
