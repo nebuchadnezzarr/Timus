@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class programaGogena
+    {
+        static void Main(string[] args)
+        {
+            Console.BackgroundColor = ConsoleColor.DarkGreen;    //для красоты фон сделан темно-зеленым
+            Console.ForegroundColor=ConsoleColor.White;   //а текст в консольке будет белым
+            do
+            {
+                Console.Write("Для перевода из шкалы Фаренгейта в шкалу Цельсия Q \n");       // сразу выпадает менюшка с выбором
+                Console.Write("Для перевода из шкалы Цельсия в шкалу Фаренгейта нажмите R \n");
+
+                if ((Console.ReadKey(true).Key == ConsoleKey.Q))  // если пользователь тыкает на Q - он перейдет во вкладку перевода из фаренгейта в цельсия
+                {
+                    
+                    Console.Beep();
+                    Console.Clear();
+                    Console.WriteLine("Введите градусы для перевода из шкалы Фаренгейта в шкалу Цельсия \n");
+                    int t = int.Parse(Console.ReadLine());
+                    Console.Beep();
+                    Console.WriteLine((t - 32) * 5 / 9);                    
+                    Console.WriteLine("Для возвращения в меню нажмите Tab\n");  //сразу же в этой вкладке юзер может сразу перевести градусы обратно
+                    Console.WriteLine("Для перевода обратно нажмите A \n");     // а может вернуться назад в меню и сделать это через другую вкладку
+                    if ((Console.ReadKey(true).Key == ConsoleKey.A))
+                    {
+                        Console.Beep();                         //каждое действие сопровождается звуком
+                        Console.WriteLine(t * 9 / 5 + 32);   //собственно, обратный перевод 
+                    }
+                    while (Console.ReadKey().Key != ConsoleKey.Tab) ;  //возвращение в меню и очищение консольки
+                    Console.Beep();
+                    Console.Clear();
+                }
+                
+                if ((Console.ReadKey(true).Key == ConsoleKey.R))   // аналогичная вкладка, но уже для перевода из шкалы цельсия в шкалу по фаренгейту
+                 
+                {
+                    Console.Beep();
+                    Console.Clear();
+                    Console.WriteLine("Введите градусы для перевода из шкалы Цельсия в шкалу Фаренгейта\n");
+                    int t = int.Parse(Console.ReadLine());
+                    Console.Beep();
+                    Console.WriteLine(t*9/5+32);
+                    Console.WriteLine("Для перевода обратно нажмите A \n"); //здесь юзер может сделать все то же самое и вновь вернуться в меню
+                    Console.WriteLine("Для возвращение в меню нажмите Tab\n");
+                    if ((Console.ReadKey(true).Key == ConsoleKey.A))
+                    {
+                        Console.Beep();
+                        Console.WriteLine((t - 32) * 5 / 9); 
+                    }
+                    
+                    while (Console.ReadKey().Key != ConsoleKey.Tab) ;
+                    Console.Beep();            // еще один божественный саунд
+                    Console.Clear();           //возвращение в меню и очищение консольки
+                    
+                }
+                                               
+            }
+
+            while (Console.ReadKey().Key != ConsoleKey.Escape);       // и все это "чудо" работает, пока не нажата клавиша выхода - escape
+                    
+        }
+    }
+}
