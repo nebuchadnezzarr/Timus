@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ger
+{
+    class Program
+    {
+        static void Main(string[] args)  
+        {
+           int N = int.Parse(Console.ReadLine());   // вводим число N, до которого будем искать сумму (включительно)
+
+           if (N >= 1)                             // проверка, что N - число положительное
+               Console.WriteLine((1 + N) * N / 2);    // формула суммы арифм. прогрессии
+           else                           // условие для отрицательных N
+               Console.WriteLine((N + 1) * ((-1) * N + 2) / 2); // формула суммы арифм. прогрессии для отриц. чисел
+               
+       //        Console.ReadKey();
+
+
+
+        }
+    }
+}
