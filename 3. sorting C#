@@ -1,0 +1,150 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace сортировка
+{
+    class Program
+    {
+        const int K = 10;
+        static void selection_sort(ref int[] a) //сортировка выборкой
+        {
+            for (int i = 0; i < a.Length - 1; i++)
+            {
+                int  tmp= i;
+                for (int j = i + 1; j < a.Length; j++)
+                {
+                    if (a[j] < a[tmp])
+                    {
+                        tmp = j;
+                    }
+                }
+
+                int t = a[tmp];
+                a[tmp] = a[i];
+                a[i] = t;
+            }
+
+        }
+        static void bubble_sort(ref int[] a) // сортировка пузырьком 
+        {
+            int tmp;
+            for (int i = 0; i < a.Length; i++)
+            {
+                for (int j = i + 1; j < a.Length; j++)
+                {
+                    if (a[i] > a[j])
+                    {
+                        tmp = a[i];
+                        a[i] = a[j];
+                        a[j] = tmp;
+                    }
+                }
+            }
+
+        }
+        static void counting_sort(int[] input, out int[] output)  //сортировка подсчетом
+        {
+
+            output = new int[K];
+            int k;
+            for (int i = 0; i < input.Length; i++)
+            {
+                k = 0;
+                for (int j = 0; j < input.Length; j++)
+                {
+                    if (input[i] > input[j])
+                        k++;
+                }
+                output[k] = input[i];
+            }
+
+        }
+        static void insertion_sort(int[] input, out int[] output)  //сортировка вставкой
+        {
+
+            output = new int[K];
+            int tmp, place;
+
+            for (int i = 1; i < input.Length; i++)
+            {
+                tmp = input[i];
+                place = i - 1;
+                while (place >= 0 && input[place] > tmp)
+                {
+                    input[place + 1] = input[place];
+                    place = place - 1;
+                }
+                input[place + 1] = tmp;
+            }
+            for (int i = 0; i < input.Length; i++)
+            {
+                output[i] = input[i];
+            }
+
+        }
+        static void check(int[] array)
+        {
+            Console.Write("\nРезультат:");
+            for (int i = 1; i < K; i++)
+            {
+                if (array[i] < array[i - 1])
+                {
+                    Console.Write(" Незачёт!\n");
+                    break;
+                }
+                if (i == K - 1) Console.Write(" Зачёт!\n");
+            }
+
+
+        }
+        static void Main(string[] args)
+        {
+            int[] a = new int[K];
+            int[] bs = new int[K];
+            int[] cs;
+            int[] ins;
+            int[] ds = new int[K];
+            Random rand = new Random(DateTime.Now.Millisecond);
+            for (int i = 0; i < K; i++)
+            {
+                int num;
+                do
+                    num = rand.Next(0, 100);
+                while (a.Contains(num));
+
+                a[i] = num;
+                bs[i] = num;
+                ds[i] = num;
+
+            }
+            Console.Write("Массив:                 ");
+            foreach (int i in a) Console.Write(i.ToString() + ' ');
+
+
+            Console.Write("\n\nСортировка пузырьком:   ");
+            bubble_sort(ref bs);
+            foreach (int i in bs) Console.Write(i.ToString() + ' ');
+            check(bs);
+
+            Console.Write("\nСортировка вставкой:    ");
+            insertion_sort(a, out ins);
+            foreach (int i in ins) Console.Write(i.ToString() + ' ');
+            check(ins);
+
+            Console.Write("\nСортировка выбором:     ");
+            selection_sort(ref ds);
+            foreach (int i in ds) Console.Write(i.ToString() + ' ');
+            check(ds);
+
+            Console.Write("\nСортировка подсчётом:   ");
+            counting_sort(a, out cs);
+            foreach (int i in cs) Console.Write(i.ToString() + ' ');
+            check(cs);
+
+            Console.ReadLine();
+        }
+    }
+}
