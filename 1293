@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main() 
+        {
+            int A, B, N, s;                  //ввожу переменные
+            string[] numbers = Console.ReadLine().Split(' '); //штука для ввода с клавиатуры строки из чисел
+            A = int.Parse(numbers[0]);       //методом Parse вытаскиваю из строки 1е число и тд
+            B = int.Parse(numbers[1]);
+            N = int.Parse(numbers[2]);
+
+            
+
+                s = 2 * A * B * N;           //т.к. надо с двух сторон - умножаю на 2
+            
+                Console.WriteLine(s);
+                // Console.ReadKey();      
+
+
+        }
+    }
+}
