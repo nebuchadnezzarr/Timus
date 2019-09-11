@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _17851
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int v = int.Parse(Console.ReadLine());
+
+            //do
+            {
+
+                if ((v >= 1) && (v <= 4))
+                    Console.WriteLine("few");                
+                if ((v >= 5) && (v <= 9))
+                    Console.WriteLine("several");
+                if ((v >= 10) && (v <= 19))
+                    Console.WriteLine("pack");
+                if ((v >= 20) && (v <= 49))
+                    Console.WriteLine("lots");
+                if ((v >= 50) && (v <= 99))
+                    Console.WriteLine("horde");
+                if ((v >= 100) && (v <= 249))
+                    Console.WriteLine("throng");
+                if ((v >= 250) && (v <= 499))
+                    Console.WriteLine("swarm");
+                if ((v >= 500) && (v <= 999))
+                    Console.WriteLine("zounds");
+                if ((v >= 1000))
+                    Console.WriteLine("legion");
+                //Console.ReadKey();
+            }
+
+          //  while (Console.ReadKey().Key != ConsoleKey.Escape);
+            
+            }
+    }
+}
