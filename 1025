@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1025
+{
+    class Program
+    {
+        private static void Main(string[] args)
+        {
+            int k = int.Parse(Console.ReadLine()); //ввод нечетного числа k
+            string[] s = Console.ReadLine().Split(' '); // ввод K нечетных чисел избирателей в группах
+            int[] p = new int[k];
+
+            for (int i = 0; i < k; ++i)     //чтобы определить минимальное количество голосов, необходимое для победы
+            {                               //группы располагаются в порядке возрастания, где меньше человек - меньше требуется голосов
+                p[i] = int.Parse(s[i]);     
+            }
+            Array.Sort(p);     // сортировочка для каждой из групп
+            
+            int izb = 0;
+            for (int i = 0; i < k / 2 + 1; ++i)
+            {
+
+                izb += (p[i] / 2) + 1;         // тогда для победы в общем необходимо выиграть в половине общего количества групп + 1
+            }
+
+            Console.WriteLine(izb);
+            Console.ReadKey();
+        }
+
+        private static void Sort(ref int[] popingroups)       // сортировка путем определения минимально необходимого для победы числа голосов
+        {
+            for (int i = 1; i < popingroups.Length; i++)
+            {
+                int t = popingroups[i];
+                int j = i - 1;
+
+                while (j >= 0 && popingroups[j] > t)
+                {
+                    popingroups[j + 1] = popingroups[j];
+                    j = j - 1;
+                }
+                popingroups[j + 1] = t;
+            }
+        }
+    }
+}
