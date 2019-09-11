@@ -1,0 +1,21 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace 2012gogen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int f = int.Parse(Console.ReadLine()); //ввод с клавиатуры числа задач
+            int a = 12 - f; // число оставшихся задач
+            if (a*45<=240)    //по 45 мин на оставшуюуся задачу, 240 минут - это 4 часа времени, оставшегося после 1го часа
+                Console.WriteLine ("YES");
+            else
+                Console.WriteLine ("NO");
+            Console.ReadKey();
+        }
+    }
+}
