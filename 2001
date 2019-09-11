@@ -1,0 +1,46 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ger
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int sum1, ya1, ya2;     // обозначаю общую сумму ягод в первом в самом начале
+            string[] mass = Console.ReadLine().Split(' ');   // методом сплит ввожу 2 значения через пробел 
+
+            int a = int.Parse(mass[0]);  //методом парс считываю данные
+            int b = int.Parse(mass[1]);
+
+            if (a > 0 && b > 0 && a < 10000 && b < 10000) //проверка выполнения условий задачи 
+            {
+                sum1 = a + b;   // подсчет суммы ягод для будущего сравнения 
+                        
+            string[] mass1 = Console.ReadLine().Split(' '); //ввод следующих значений после первого пересыпания
+            
+            int a2 = int.Parse(mass1[0]);
+            int b2 = int.Parse(mass1[1]);
+
+            if (( b2>b ) && ( (a2+b2)!= sum1 ))   // проверка условия, чтобы лишних ягод не появилось
+                {               
+            string[] mass2 = Console.ReadLine().Split(' '); // ввод значений после второго пересыпания
+            int a3 = int.Parse(mass2[0]); 
+            int b3 = int.Parse(mass2[1]);            
+      
+             if(( a3>0 ) && ( b3>0 ) && (a3<10000) && (b3<10000)) 
+
+                 if ((a3 > a) && ((a3 + b3)!= sum1))  // проверка условия, чтобы лишних ягод не появилось
+                 {
+                     ya1 = a - a3;      // итоговый подсчет ягодок 1го математика
+                     ya2 = b - b2;       // итоговый подсчет ягодок 2го математика
+                     Console.WriteLine("{0}, {1}", ya1, ya2);
+                     Console.ReadKey();
+                 }
+             }
+            }
+            }
+        }
+    }
