@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1820
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string [] mass = Console.ReadLine().Split(' '); // считывание данных 
+            int n = int.Parse(mass[0]);   // методом парс обозначаю n - число котлеток за первое число массива
+            int k = int.Parse(mass[1]);   // обозначаю за k кол-во котлеток, которые могут быть обжарены в сковороде
+            if (n <= k) Console.WriteLine(2);   // если число котлеток вписывается в кол-во возможных одновременно приготовленных - ответ 2 минуты
+            else
+            {
+                int t = ((2*n-1)/k+1);   // иначе нахожу отношение числа котлеток к числу возможных приготовленных за 1 раз
+                
+                Console.WriteLine(t);
+            }
+            Console.ReadKey();               
+               
+            }
+        }
+    }
+
