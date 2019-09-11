@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace progagogaperemoga
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string Q = null;                           
+            long Q1 = long.Parse(Console.ReadLine()); //методом парс считываем вводимое число
+            if (Q1 == 0) Console.WriteLine(10);    //условие, без которого тимус не принимает почему-то эту задачу
+            if ((Q1 < 10) && (Q1 > 0)) Console.WriteLine(Q1); //хотя по идее, при ввводе любого числа, содержащего 0, произведение должно равнятся 0.
+            if (Q1 > 9)
+            {
+                for (int i = 9; i > 1; i--) // задаются делители (разложение числа на простые множители)
+                {
+                    while ((Q1 % i == 0) && (Q1 > 1))     // проверка делимости на простые множители
+                    {
+                        Q = i.ToString() + Q;   
+                        Q1 = Q1 / i;     
+                    }
+
+                }
+                if (Q1 == 1) Console.Write(Q);   
+                else Console.WriteLine(-1);
+
+            }
+        }
+    }
+}
