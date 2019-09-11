@@ -1,0 +1,256 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace tryharder
+{
+    class Pingvi          //основной класс, в который передается информация о названии и географическом положении
+    { 
+        public string mammalia;
+        public string location;       
+        public bool sex;     //переменная типа bool для определения пола особи
+        public Random r1 = new Random();    // генерация случайных чисел для вычисления средних значений размеров и веса птицы
+        public Random r2 = new Random();
+        public Pingvi() //конструктор без параметров, необходимый для работы наследующих классов 
+        { } 
+        public Pingvi(string m, string l)  //конструктор, в котором описаны переменные
+        {
+            mammalia = m;
+            location = l;
+        }
+       public void geography () //метод для вывода географического положения (информация идет из основной программы main дальше)
+        {
+           Console.WriteLine(); 
+           Console.WriteLine("Название   " + mammalia);
+           Console.WriteLine ("Ареал обитания   " + location);
+       }
+      
+       public void Sex()  //метод для определения пола особи
+        {
+            if (sex == true) { Console.WriteLine("Самец"); }
+            else Console.WriteLine("Самка");
+        }
+       private void ne(int a, int b) //метод недоступный вне класса для проверки введенных данных (используется дальше)
+       {
+           if ((a < 0) && (b < 0)) 
+               Console.WriteLine("Введенные данные не соответствуют доступным");
+       }
+}
+        class af : Pingvi  //наследующий класс, соответствующий первому роду пингвинов
+    {
+        private int population;  // в полях данных записывается информация о популяции вида, рационе, среднесуточном рационе,
+        private string ration;  // а также о средних размерах и весе птиц
+        public int rationperday;
+        public int proportions;
+        public int weight;
+       
+      
+        public af () // в параметрическом конструкторе задатся все необходимые переменные
+        {
+            ration = " рыбы (сардины), кальмаров, киля";
+            population = 175;
+            rationperday = 5;            
+            proportions = r1.Next(100, 130); //и генерируются значение размеров и веса птиц в заданных диапазонах
+            weight = r2.Next(20, 50);
+        }
+
+        public void info () //метод вывода инфомации о виде
+        {
+            Console.WriteLine();  
+            Console.WriteLine("Численность в тыс. пар  " + population); 
+            Console.WriteLine("Средние размеры (100-130) см " + proportions);                                
+            Console.WriteLine("Средний вес (20-50) кг " + weight);
+            Console.WriteLine();            
+        }
+
+        public void info2 (int rp)  //метод вывода и подсчета суточного рациона
+        {
+            Console.WriteLine("Рацион состоит из " + ration);
+            if (rp > 5) { Console.WriteLine("Пищи хватит на срок (в днях)   " + rp / 5 ); }
+            else Console.WriteLine("Нехватка пищи");
+        }
+    
+           public void info2(int a,int b)  //методы с одинаковыми названиями, но различными входными данными
+        {
+            if ((a >= 35) && ( b>= 115))      //проверка условий для определения пола                         
+            {
+                sex = true; 
+            }
+            else sex = false; 
+            }                   
+        }
+
+        class ec : Pingvi   //следующие 2 класса устроены индентично, описывать их нет смысла
+        {                              //меняются входные данные те. информация о географии, рационе, численности, размерах, весе и тд
+            private int population;
+            private string ration;
+            public int rationperday;
+            public int proportions;
+            public int weight;
+
+            public ec() 
+            {
+                ration = "криля, ракообразных, кальмаров, осьминогов и рыбы";
+                population = 3000;
+                rationperday = 3;
+                proportions = r1.Next(35, 45);
+                weight = r2.Next(2, 4);
+
+            }
+            public void info()
+            {
+                Console.WriteLine();
+                Console.WriteLine("Численность в тыс. пар  " + population);
+                Console.WriteLine("Средние размеры (35 - 45 ) см " + proportions);
+                Console.WriteLine("Средний вес (2 - 4) кг " + weight);
+                Console.WriteLine();  
+            }
+              public void info3(int a,int b)
+        {
+            if ((a >= 3) && ( b>= 40))                               
+            {
+                sex = true; 
+            }
+            else sex = false; 
+            }
+             
+            public void info3(int rp1)
+            {
+                Console.WriteLine("Рацион состоит из  " + ration);
+                if (rp1 > 3) { Console.WriteLine("Пищи хватит на срок (в днях)   " + rp1 / 3); }
+                else Console.WriteLine("Нехватка пищи");
+            }
+        }
+
+        class ma : Pingvi
+        {
+            private int population;
+            private string ration;
+            public int rationperday;
+            public int proportions;
+            public int weight;
+
+            public ma ()
+            {
+                ration = "криля, ракообразных, кальмаров, осьминогов и рыбы";
+                population = 18;
+                rationperday = 4;
+                proportions = r1.Next(60, 75);
+                weight = r2.Next(5, 8);
+
+            }
+            public void info()
+            {
+                Console.WriteLine();
+                Console.WriteLine("Численность в тыс. пар  " + population);
+                Console.WriteLine("Средние размеры (60 - 75 ) см " + proportions);
+                Console.WriteLine("Средний вес (5 - 8) кг " + weight);
+                Console.WriteLine();
+            }
+            public void info4(int a, int b)
+            {
+                if ((a >= 6) && (b >= 68))
+                {
+                    sex = true;
+                }
+                else sex = false;
+            }
+
+            public void info4(int rp2)
+            {
+                Console.WriteLine("Рацион состоит из  " + ration);
+                if (rp2 > 4) { Console.WriteLine("Пищи хватит на срок (в днях)   " + rp2 / 4); }
+                else Console.WriteLine("Нехватка пищи");
+            }
+        }
+
+    class mainprogram            
+    {
+        static void Main() //основная программа main
+        {
+                Console.BackgroundColor = ConsoleColor.DarkGreen;     //оформление консоли 
+                Console.ForegroundColor = ConsoleColor.White;   
+            do {
+                Console.WriteLine("Выбрать интересующий род пингвинов: \n 1. Императорский \n 2. Хохлатый  \n 3. Великолепный"); //меню для пользователя
+                Console.Beep();
+                if ((Console.ReadKey(true).Key == ConsoleKey.D1))    //ветвление по клавишам 1 - 3
+                {
+                    Console.Beep();  //все сопровождается звуком
+                    Console.Clear();  //и после использования консоль отчищается и вновь появляется меню
+                    Pingvi pvg = new Pingvi("Aptenodytes forsteri", "Антарктида"); //передача в основной класс названия и ареала обитания
+                    pvg.geography();   //использование метода geography, описанного раннее                  
+                    af pvg1 = new af(); //работа с наследующим классом 
+                    pvg1.info(); //вывод информации о виде 
+                    Console.WriteLine("Для получения информации о птице введите следующие данные: \n Вес. \n Размеры.");
+                    int a = int.Parse(Console.ReadLine());
+                    int b = int.Parse(Console.ReadLine()); //считывание методом парс вводимых данных
+                    pvg1.info2(a, b); //отправка этих данных в метод info2 и его дальнейшее использование
+                    pvg1.Sex(); //метод для определения пола 
+                    Console.WriteLine("Для подсчета ежеждневного рациона введите количество пищи");
+                    int rp = int.Parse(Console.ReadLine()); //ввод количества пищи 
+                    pvg1.info2(rp); ////отправка уже других данных в метод info2 
+                    Console.WriteLine("Для возврата в основное меню нажмите Tab");  
+                   
+                    while (Console.ReadKey().Key != ConsoleKey.Tab) /после нажатия клавиши tab происходит чистка консольки и возврат в меню.
+                         Console.Beep();
+                    Console.Clear();   //аналогично устроеные оставшиеся ветки if
+                }
+
+                if ((Console.ReadKey(true).Key == ConsoleKey.D2))
+                {
+                    Console.Beep();
+                    Console.Clear();
+                    Pingvi pvg = new Pingvi("Eudyptes chrysocome", "Острова Субантарктики, Тасмания, Южная Америка");
+                    pvg.geography();                   
+                    ec pvg2 = new ec();                    
+                    pvg2.info();
+                    Console.WriteLine("Для получения информации о птице введите следующие данные: \n Вес. \n Размеры.");
+                    int a = int.Parse(Console.ReadLine());
+                    int b = int.Parse(Console.ReadLine());
+                    pvg2.info3(a, b);
+                    pvg2.Sex();
+                    Console.WriteLine("Для подсчета ежеждневного рациона введите количество пищи");
+                    int rp1 = int.Parse(Console.ReadLine());
+                    pvg2.info3(rp1);
+                    Console.WriteLine("Для возврата в основное меню нажмите Tab");
+                    while (Console.ReadKey().Key != ConsoleKey.Tab)
+                        Console.Beep();
+                    Console.Clear();
+                }
+
+                if ((Console.ReadKey(true).Key == ConsoleKey.D3))
+                {
+                    Console.Beep();
+                    Console.Clear();
+                    Pingvi pvg = new Pingvi("Megadyptes antipodes", "Южный остров, острова Баунти и Атиподов, Маккуори");
+                    pvg.geography();
+                    ma pvg2 = new ma();
+                    pvg2.info();
+                    Console.WriteLine("Для получения информации о птице введите следующие данные: \n Вес. \n Размеры.");
+                    int a = int.Parse(Console.ReadLine());
+                    int b = int.Parse(Console.ReadLine());
+                    pvg2.info4(a, b);
+                    pvg2.Sex();
+                    Console.WriteLine("Для подсчета ежеждневного рациона введите количество пищи");
+                    int rp2 = int.Parse(Console.ReadLine());
+                    pvg2.info4(rp2);
+                    Console.WriteLine("Для возврата в основное меню нажмите Tab");
+                    while (Console.ReadKey().Key != ConsoleKey.Tab)
+                        Console.Beep();
+                    Console.Clear();
+                }
+
+            }
+            while (Console.ReadKey().Key != ConsoleKey.Escape); //вся программа будет работать пока не нажата клавиша выхода - esc.
+         //  Console.ReadKey();
+        } 
+    }
+}
+
+
+
+
+
+
